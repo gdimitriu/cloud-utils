@@ -23,7 +23,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Policy {
     @SerializedName("Version")
@@ -74,5 +76,86 @@ public class Policy {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+}
+
+class PolicyStatement {
+    @SerializedName("Sid")
+    private String sid;
+
+    @SerializedName("Effect")
+    private String effect;
+
+    @SerializedName("Principal")
+    private Map<String, List<String>> principal = null;
+
+    @SerializedName("Action")
+    private List<String> actions = null;
+
+    @SerializedName("Resource")
+    private List<String> resource = null;
+
+    @SerializedName("Condition")
+    private Map<String, Map<String, List<String>>> conditions = null;
+
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
+    public void setEffect(String effect) {
+        this.effect = effect;
+    }
+
+    public void addAction(String action) {
+        if (actions == null) {
+            actions = new ArrayList<>();
+        }
+        this.actions.add(action);
+    }
+
+    public void addResource(String resource) {
+        if (this.resource == null) {
+            this.resource = new ArrayList<>();
+        }
+        this.resource.add(resource);
+    }
+
+    public void addPrincipal(String service, String rule) {
+        if (principal == null) {
+            principal = new HashMap<>();
+        }
+        if (principal.containsKey(service)) {
+            principal.get(service).add(rule);
+        } else {
+            List<String> rules = new ArrayList<>();
+            rules.add(rule);
+            principal.put(service, rules);
+        }
+    }
+    public void addCondition(String condition, String type, String resource) {
+        if (conditions == null) {
+            conditions = new HashMap<>();
+        }
+        if (conditions.containsKey(condition)) {
+            Map<String, List<String>> theCondition = conditions.get(condition);
+            if (theCondition != null && theCondition.containsKey(type)) {
+                theCondition.get(type).add(resource);
+            } else if (theCondition == null) {
+                theCondition = new HashMap<>();
+                List<String> resources = new ArrayList<>();
+                resources.add(resource);
+                theCondition.put(type, resources);
+            } else {
+                List<String> resources = new ArrayList<>();
+                resources.add(resource);
+                theCondition.put(type, resources);
+            }
+        } else {
+            Map<String, List<String>> theCondition = new HashMap<>();
+            List<String> resources = new ArrayList<>();
+            resources.add(resource);
+            theCondition.put(type, resources);
+            conditions.put(condition, theCondition);
+        }
     }
 }
