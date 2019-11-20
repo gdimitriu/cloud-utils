@@ -17,7 +17,4 @@
  You should have received a copy of the GNU General Public License
  along with cloud-utils.  If not, see <http://www.gnu.org/licenses/>.
  */
-module cloud.utils.aws.utils {
-    requires com.google.gson;
-    exports cloud.utils.aws.utils.auth;
-}
+package cloud.utils.configuration.model;

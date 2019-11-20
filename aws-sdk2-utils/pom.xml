@@ -35,6 +35,11 @@
             <version>${cloud-utils.version}</version>
         </dependency>
         <dependency>
+            <groupId>cloud-utils</groupId>
+            <artifactId>cloud-configuration</artifactId>
+            <version>${cloud-utils.version}</version>
+        </dependency>
+        <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>core</artifactId>
             <version>${aws.version}</version>

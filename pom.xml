@@ -16,6 +16,9 @@
         <module>aws-sdk2-utils</module>
         <module>aws-utils</module>
         <module>aws-utils-tests</module>
+        <module>cloud-configuration</module>
+        <module>pharma-aws-sdk1</module>
+        <module>pharma-aws-sdk2</module>
     </modules>
 
     <build>
