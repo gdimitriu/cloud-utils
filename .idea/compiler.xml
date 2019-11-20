@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="awssdk2utils" />
+        <module name="awsutilstests" />
         <module name="awssdk1utils" />
+        <module name="awsutils" />
+        <module name="awssdk2utils" />
       </profile>
     </annotationProcessing>
   </component>
