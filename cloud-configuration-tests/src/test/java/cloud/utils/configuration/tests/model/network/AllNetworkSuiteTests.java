@@ -17,8 +17,12 @@
  You should have received a copy of the GNU General Public License
  along with cloud-utils.  If not, see <http://www.gnu.org/licenses/>.
  */
-module cloud.utils.configuration {
-    requires java.xml.bind;
-    exports cloud.utils.configuration.model.network;
-    exports cloud.utils.configuration.model.virtualprivatecloud;
+package cloud.utils.configuration.tests.model.network;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({SubnetDescriptionTest.class, FirewallRuleDescriptionTest.class})
+public class AllNetworkSuiteTests {
 }

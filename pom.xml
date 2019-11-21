@@ -19,6 +19,7 @@
         <module>cloud-configuration</module>
         <module>pharma-aws-sdk1</module>
         <module>pharma-aws-sdk2</module>
+        <module>cloud-configuration-tests</module>
     </modules>
 
     <build>
@@ -47,7 +48,11 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.4.0-b180725.0644</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.2.11</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>

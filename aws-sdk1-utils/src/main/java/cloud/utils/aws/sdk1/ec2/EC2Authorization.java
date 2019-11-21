@@ -49,19 +49,6 @@ public class EC2Authorization {
     /** the client for the Amazon storage */
     private AmazonS3 s3client;
 
-    private static String EC2_FULL_S3 = "{"+
-            "    \"Version\": \"2012-10-17\","+
-            "    \"Statement\": ["+
-            "        {"+
-            "            \"Effect\": \"Allow\","+
-            "            \"Action\": \"sts:AssumeRole\","+
-            "            \"Principal\": {"+
-            "                  \"Service\":[ \"ec2.amazonaws.com\"]"+
-            "            }" +
-            "        }"+
-            "    ]"+
-            "}";
-
     public EC2Authorization(String region) {
         AWSCredentials credentials = new ProfileCredentialsProvider().getCredentials();
         ec2Client = AmazonEC2ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -140,8 +127,11 @@ public class EC2Authorization {
      * @retun the arn of the created role.
      */
     public String createEC2S3FullRoleAndProfile(String name) {
+        String ec2fulls3Json =  new cloud.utils.aws.utils.auth.Policy("2012-10-17")
+                .withEffect("Allow").withAction("sts:AssumeRole")
+                .withPrincipal("Service", "ec2.amazonaws.com").toJson();
         CreateRoleRequest request = new CreateRoleRequest();
-        request.withRoleName(name).withAssumeRolePolicyDocument(EC2_FULL_S3);
+        request.withRoleName(name).withAssumeRolePolicyDocument(ec2fulls3Json);
         aimClient.createRole(request);
         AttachRolePolicyRequest requestAtachPolicy= new AttachRolePolicyRequest().withRoleName(name).withPolicyArn("arn:aws:iam::aws:policy/AmazonS3FullAccess");
         aimClient.attachRolePolicy(requestAtachPolicy);

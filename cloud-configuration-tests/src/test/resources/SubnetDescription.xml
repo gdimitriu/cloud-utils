@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Subnet Name="SubnetName">
+    <IpRange>10.0.1.0/24</IpRange>
+    <AZ>us-east-1a</AZ>
+</Subnet>
