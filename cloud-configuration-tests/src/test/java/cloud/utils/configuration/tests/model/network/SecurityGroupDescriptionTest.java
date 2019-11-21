@@ -38,7 +38,7 @@ public class SecurityGroupDescriptionTest {
         SecurityGroupDescription securityGroupDescription = (SecurityGroupDescription) unmarshaller.unmarshal(getClass().getModule().getResourceAsStream("SecurityGroupDescription.xml"));
         assertEquals("MySecurityGroup", securityGroupDescription.getName());
         assertEquals("My Security Group", securityGroupDescription.getDescription());
-        FirewallRuleDescription firewalls[] = securityGroupDescription.getFirewallRuleDescriptions();
+        FirewallRuleDescription[] firewalls = securityGroupDescription.getFirewallRuleDescriptions();
         assertEquals(2, firewalls.length);
         assertEquals("0.0.0.0/0", firewalls[0].getIpRanges()[0]);
         assertEquals("10.0.0.0/0", firewalls[0].getIpRanges()[1]);

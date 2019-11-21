@@ -55,4 +55,12 @@ public class VPCDescription {
     public String getVpcId() {
         return vpcId;
     }
+
+    public SecurityGroupDescription[] getSecurityGroups() {
+        return securityGroups;
+    }
+
+    public SubnetDescription[] getSubnets() {
+        return subnets;
+    }
 }
