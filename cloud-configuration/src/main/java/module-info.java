@@ -18,4 +18,5 @@
  along with cloud-utils.  If not, see <http://www.gnu.org/licenses/>.
  */
 module cloud.utils.configuration {
+    requires java.xml.bind;
 }
