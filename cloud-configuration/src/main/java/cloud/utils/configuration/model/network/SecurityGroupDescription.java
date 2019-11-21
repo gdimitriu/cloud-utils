@@ -33,7 +33,7 @@ public class SecurityGroupDescription {
     private String name;
 
     @XmlElement(name = "Description")
-    private String desciption;
+    private String description;
 
     @XmlElement(name = "FirewallRule")
     private FirewallRuleDescription[] firewallRuleDescriptions;
@@ -46,8 +46,8 @@ public class SecurityGroupDescription {
         return name;
     }
 
-    public String getDesciption() {
-        return desciption;
+    public String getDescription() {
+        return description;
     }
 
     public FirewallRuleDescription[] getFirewallRuleDescriptions() {

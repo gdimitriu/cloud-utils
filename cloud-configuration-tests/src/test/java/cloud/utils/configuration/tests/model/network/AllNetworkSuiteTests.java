@@ -23,6 +23,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({SubnetDescriptionTest.class, FirewallRuleDescriptionTest.class})
+@Suite.SuiteClasses({SubnetDescriptionTest.class, FirewallRuleDescriptionTest.class, SecurityGroupDescriptionTest.class})
 public class AllNetworkSuiteTests {
 }
