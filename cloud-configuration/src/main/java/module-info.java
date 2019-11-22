@@ -21,4 +21,5 @@ module cloud.utils.configuration {
     requires java.xml.bind;
     exports cloud.utils.configuration.model.network;
     exports cloud.utils.configuration.model.virtualprivatecloud;
+    exports cloud.utils.configuration.model.computing;
 }

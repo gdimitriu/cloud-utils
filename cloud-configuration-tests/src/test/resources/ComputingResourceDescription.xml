@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ComputingResource Name="WebInstance1">
+    <ImageName>ami-00eb20669e0990cb4</ImageName>
+    <InstanceType>T2_Micro</InstanceType>
+    <SecurityGroupName>WebServerSecurityGroupLinux</SecurityGroupName>
+    <SubnetName>1aPublicPharma</SubnetName>
+    <KeyPairName>javaAutoKeyPair</KeyPairName>
+    <MinInstances>1</MinInstances>
+    <MaxInstances>1</MaxInstances>
+</ComputingResource>

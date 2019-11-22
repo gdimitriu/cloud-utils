@@ -19,6 +19,7 @@
  */
 package cloud.utils.configuration.tests.model;
 
+import cloud.utils.configuration.tests.model.computing.ComputingResourceDescriptionTest;
 import cloud.utils.configuration.tests.model.network.*;
 import cloud.utils.configuration.tests.model.virtualprivatecloud.VPCDescriptionTest;
 import org.junit.runner.RunWith;
@@ -27,6 +28,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({FirewallRuleDescriptionTest.class, SecurityGroupDescriptionTest.class,
         SubnetDescriptionTest.class, InternetGatewayDescriptionTest.class, NatGatewayDescriptionTest.class,
-        VPCDescriptionTest.class})
+        VPCDescriptionTest.class,
+        ComputingResourceDescriptionTest.class})
 public class AllModelSuiteTests {
 }

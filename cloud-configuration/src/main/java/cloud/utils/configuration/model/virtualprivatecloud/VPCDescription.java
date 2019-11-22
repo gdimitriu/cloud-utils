@@ -50,7 +50,7 @@ public class VPCDescription {
 
     /** the id of the vpc to be used in construction */
     @XmlTransient
-    private String Id;
+    private String id;
 
     public String getVpcName() {
         return vpcName;
@@ -81,7 +81,7 @@ public class VPCDescription {
      * @return the resource id
      */
     public String getId() {
-        return Id;
+        return id;
     }
 
     /**
@@ -89,6 +89,6 @@ public class VPCDescription {
      * @param id the resource if
      */
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 }
