@@ -2,9 +2,23 @@
 <ComputingResource Name="WebInstance1">
     <ImageName>ami-00eb20669e0990cb4</ImageName>
     <InstanceType>T2_Micro</InstanceType>
+    <OSType>LINUX</OSType>
     <SecurityGroupName>WebServerSecurityGroupLinux</SecurityGroupName>
     <SubnetName>1aPublicPharma</SubnetName>
     <KeyPairName>javaAutoKeyPair</KeyPairName>
     <MinInstances>1</MinInstances>
     <MaxInstances>1</MaxInstances>
+    <InstallScript>#!/bin/bash</InstallScript>
+    <InstallScript>exec &gt; /tmp/start.log  2&gt;&amp;1</InstallScript>
+    <InstallScript>sudo yum update -y</InstallScript>
+    <InstallScript>sudo yum install httpd -y</InstallScript>
+    <InstallScript>sudo chkconfig httpd on</InstallScript>
+    <InstallScript>cd /home/ec2-user</InstallScript>
+    <InstallScript>aws s3 cp s3://gabrieldimitriupharmaweb/pharma_webservers/web1.zip web.zip</InstallScript>
+    <InstallScript>sudo unzip web.zip -d /var/www/html/</InstallScript>
+    <InstallScript>rm web.zip</InstallScript>
+    <InstallScript>aws s3 cp s3://gabrieldimitriupharmaweb/pharma_webservers/welcome.conf welcome.conf</InstallScript>
+    <InstallScript>sudo cp welcome.conf /etc/httpd/conf.d/</InstallScript>
+    <InstallScript>rm welcome.conf</InstallScript>
+    <InstallScript>sudo /etc/init.d/httpd start</InstallScript>
 </ComputingResource>

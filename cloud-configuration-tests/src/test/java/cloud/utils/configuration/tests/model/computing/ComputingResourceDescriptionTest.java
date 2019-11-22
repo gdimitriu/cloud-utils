@@ -39,10 +39,26 @@ public class ComputingResourceDescriptionTest {
         assertEquals("WebInstance1", computingResourceDescription.getName());
         assertEquals("ami-00eb20669e0990cb4", computingResourceDescription.getImageName());
         assertEquals("T2_Micro", computingResourceDescription.getInstanceType());
+        assertEquals("LINUX", computingResourceDescription.getOsTypeAsString());
         assertEquals("WebServerSecurityGroupLinux", computingResourceDescription.getSecurityGroupName());
         assertEquals("1aPublicPharma", computingResourceDescription.getSubnetName());
         assertEquals("javaAutoKeyPair", computingResourceDescription.getKeyPairName());
         assertEquals(1, computingResourceDescription.getMinInstances());
         assertEquals(1, computingResourceDescription.getMaxInstances());
+        String[] installScript = computingResourceDescription.getInstallScript();
+        assertEquals(13, installScript.length);
+        assertEquals("#!/bin/bash", installScript[0]);
+        assertEquals("exec > /tmp/start.log  2>&1", installScript[1]);
+        assertEquals("sudo yum update -y", installScript[2]);
+        assertEquals("sudo yum install httpd -y", installScript[3]);
+        assertEquals("sudo chkconfig httpd on", installScript[4]);
+        assertEquals("cd /home/ec2-user", installScript[5]);
+        assertEquals("aws s3 cp s3://gabrieldimitriupharmaweb/pharma_webservers/web1.zip web.zip", installScript[6]);
+        assertEquals("sudo unzip web.zip -d /var/www/html/", installScript[7]);
+        assertEquals("rm web.zip", installScript[8]);
+        assertEquals("aws s3 cp s3://gabrieldimitriupharmaweb/pharma_webservers/welcome.conf welcome.conf", installScript[9]);
+        assertEquals("sudo cp welcome.conf /etc/httpd/conf.d/", installScript[10]);
+        assertEquals("rm welcome.conf", installScript[11]);
+        assertEquals("sudo /etc/init.d/httpd start", installScript[12]);
     }
 }

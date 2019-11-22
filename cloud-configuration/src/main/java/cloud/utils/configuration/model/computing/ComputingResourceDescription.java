@@ -33,6 +33,9 @@ public class ComputingResourceDescription {
     @XmlElement(name = "InstanceType")
     private String instanceType;
 
+    @XmlElement(name = "OSType")
+    private OSType osType;
+
     @XmlElement(name = "SecurityGroupName")
     private String securityGroupName;
 
@@ -48,8 +51,15 @@ public class ComputingResourceDescription {
     @XmlElement(name = "MaxInstances")
     private int maxInstances;
 
+    @XmlElement(name = "InstallScript")
+    private String[] installScript;
+
     @XmlTransient
     private String id;
+
+    public String[] getInstallScript() {
+        return installScript;
+    }
 
     public int getMaxInstances() {
         return maxInstances;
@@ -69,6 +79,14 @@ public class ComputingResourceDescription {
 
     public String getSecurityGroupName() {
         return securityGroupName;
+    }
+
+    public String getOsTypeAsString() {
+        return osType.name();
+    }
+
+    public OSType getOsType() {
+        return osType;
     }
 
     public String getInstanceType() {
@@ -98,4 +116,9 @@ public class ComputingResourceDescription {
     public void setId(String id) {
         this.id = id;
     }
+}
+
+enum OSType {
+    LINUX,
+    WINDOWS
 }
