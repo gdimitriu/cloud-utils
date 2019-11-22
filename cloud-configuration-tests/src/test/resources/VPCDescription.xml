@@ -41,4 +41,22 @@
         <IpRange>10.0.4.0/24</IpRange>
         <AZ>us-east-1b</AZ>
     </Subnet>
+    <InternetGateway Name = "IgwPharma">
+        <RouteTable>PubicPharmaRT</RouteTable>
+        <SubnetName>1aPublicPharma</SubnetName>
+        <SubnetName>1bPublicPharma</SubnetName>
+        <Address>0.0.0.0/0</Address>
+    </InternetGateway>
+    <NatGateway Name = "NatPharma1">
+        <ElasticIpName>eilpPharma1</ElasticIpName>
+        <SubnetName>1aPrivatePharma</SubnetName>
+        <RouteTableName>PrivatePharmaRT1</RouteTableName>
+        <Address>0.0.0.0/0</Address>
+    </NatGateway>
+    <NatGateway Name = "NatPharma2">
+        <ElasticIpName>eilpPharma2</ElasticIpName>
+        <SubnetName>1bPrivatePharma</SubnetName>
+        <RouteTableName>PrivatePharmaRT2</RouteTableName>
+        <Address>0.0.0.0/0</Address>
+    </NatGateway>
 </VPC>

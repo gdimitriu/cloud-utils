@@ -22,44 +22,57 @@ package cloud.utils.configuration.model.network;
 import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "Subnet")
-public class SubnetDescription {
-
+@XmlRootElement(name = "NatGateway")
+public class NatGatewayDescription {
     @XmlAttribute(name = "Name")
     private String name;
 
-    @XmlElement(name = "IpRange")
-    private String ipRange;
+    @XmlElement(name = "ElasticIpName")
+    private String elasticIpName;
 
-    @XmlElement(name = "AZ")
-    private String aZ;
+    @XmlElement(name = "SubnetName")
+    private String subnetName;
+
+    @XmlElement(name = "RouteTableName")
+    private String routeTableName;
+
+    @XmlElement(name = "Address")
+    private String destinationAddress;
 
     @XmlTransient
     private String id;
+
+    public String getDestinationAddress() {
+        return destinationAddress;
+    }
+
+    public String getRouteTableName() {
+        return routeTableName;
+    }
+
+    public String getSubnetName() {
+        return subnetName;
+    }
+
+    public String getElasticIpName() {
+        return elasticIpName;
+    }
 
     public String getName() {
         return name;
     }
 
-    public String getIpRange() {
-        return ipRange;
-    }
-
-    public String getAZ() {
-        return aZ;
-    }
-
     /**
-     * get the resource id from cloud
-     * @return the resource id
+     * get the id resource from cloud
+     * @return  id resource
      */
     public String getId() {
         return id;
     }
 
     /**
-     * set the resource id from cloud
-     * @param id the resource if
+     * set the id resource from cloud
+     * @param id the resource id
      */
     public void setId(String id) {
         this.id = id;

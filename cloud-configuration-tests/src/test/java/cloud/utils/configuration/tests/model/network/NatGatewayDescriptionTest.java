@@ -19,24 +19,27 @@
  */
 package cloud.utils.configuration.tests.model.network;
 
-import cloud.utils.configuration.model.network.SubnetDescription;
+import cloud.utils.configuration.model.network.NatGatewayDescription;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
 
-public class SubnetDescriptionTest {
+import static org.junit.Assert.assertEquals;
+
+public class NatGatewayDescriptionTest {
     @Test
     public void testLoadFromXml() throws JAXBException, IOException {
-        JAXBContext context = JAXBContext.newInstance(SubnetDescription.class);
+        JAXBContext context = JAXBContext.newInstance(NatGatewayDescription.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        SubnetDescription subnetDescription = (SubnetDescription) unmarshaller.unmarshal(getClass()
-                .getModule().getResourceAsStream("SubnetDescription.xml"));
-        assertEquals("SubnetName", subnetDescription.getName());
-        assertEquals("10.0.1.0/24", subnetDescription.getIpRange());
-        assertEquals("us-east-1a", subnetDescription.getAZ());
+        NatGatewayDescription natGatewayDescription = (NatGatewayDescription) unmarshaller.unmarshal(getClass()
+                .getModule().getResourceAsStream("NatGatewayDescription.xml"));
+        assertEquals("NatPharma1", natGatewayDescription.getName());
+        assertEquals("eilpPharma1", natGatewayDescription.getElasticIpName());
+        assertEquals("1aPrivatePharma", natGatewayDescription.getSubnetName());
+        assertEquals("PrivatePharmaRT1", natGatewayDescription.getRouteTableName());
+        assertEquals("0.0.0.0/0", natGatewayDescription.getDestinationAddress());
     }
 }

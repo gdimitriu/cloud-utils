@@ -35,7 +35,8 @@ public class SecurityGroupDescriptionTest {
     public void testLoadFromXml() throws JAXBException, IOException {
         JAXBContext context = JAXBContext.newInstance(SecurityGroupDescription.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        SecurityGroupDescription securityGroupDescription = (SecurityGroupDescription) unmarshaller.unmarshal(getClass().getModule().getResourceAsStream("SecurityGroupDescription.xml"));
+        SecurityGroupDescription securityGroupDescription = (SecurityGroupDescription) unmarshaller.unmarshal(getClass()
+                .getModule().getResourceAsStream("SecurityGroupDescription.xml"));
         assertEquals("MySecurityGroup", securityGroupDescription.getName());
         assertEquals("My Security Group", securityGroupDescription.getDescription());
         FirewallRuleDescription[] firewalls = securityGroupDescription.getFirewallRuleDescriptions();

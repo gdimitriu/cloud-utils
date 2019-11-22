@@ -19,6 +19,8 @@
  */
 package cloud.utils.configuration.model.virtualprivatecloud;
 
+import cloud.utils.configuration.model.network.InternetGatewayDescription;
+import cloud.utils.configuration.model.network.NatGatewayDescription;
 import cloud.utils.configuration.model.network.SecurityGroupDescription;
 import cloud.utils.configuration.model.network.SubnetDescription;
 
@@ -40,9 +42,15 @@ public class VPCDescription {
     @XmlElement(name = "Subnet")
     private SubnetDescription[] subnets;
 
+    @XmlElement(name = "InternetGateway")
+    private InternetGatewayDescription internetGateway;
+
+    @XmlElement(name = "NatGateway")
+    private NatGatewayDescription[] natGateways;
+
     /** the id of the vpc to be used in construction */
     @XmlTransient
-    private String vpcId;
+    private String Id;
 
     public String getVpcName() {
         return vpcName;
@@ -52,15 +60,35 @@ public class VPCDescription {
         return ipRange;
     }
 
-    public String getVpcId() {
-        return vpcId;
-    }
-
     public SecurityGroupDescription[] getSecurityGroups() {
         return securityGroups;
     }
 
     public SubnetDescription[] getSubnets() {
         return subnets;
+    }
+
+    public InternetGatewayDescription getInternetGateway() {
+        return internetGateway;
+    }
+
+    public NatGatewayDescription[] getNatGateways() {
+        return natGateways;
+    }
+
+    /**
+     * get the resource id from cloud
+     * @return the resource id
+     */
+    public String getId() {
+        return Id;
+    }
+
+    /**
+     * set the resource id from cloud
+     * @param id the resource if
+     */
+    public void setId(String id) {
+        Id = id;
     }
 }

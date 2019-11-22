@@ -38,6 +38,9 @@ public class SecurityGroupDescription {
     @XmlElement(name = "FirewallRule")
     private FirewallRuleDescription[] firewallRuleDescriptions;
 
+    @XmlTransient
+    private String id;
+
     public String getSecurityGroupId() {
         return securityGroupId;
     }
@@ -52,5 +55,21 @@ public class SecurityGroupDescription {
 
     public FirewallRuleDescription[] getFirewallRuleDescriptions() {
         return firewallRuleDescriptions;
+    }
+
+    /**
+     * get the resource id from cloud
+     * @return the resource id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * set the resource id from cloud
+     * @param id the resource if
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

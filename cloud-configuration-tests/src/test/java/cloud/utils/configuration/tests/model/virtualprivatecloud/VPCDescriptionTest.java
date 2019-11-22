@@ -19,9 +19,7 @@
  */
 package cloud.utils.configuration.tests.model.virtualprivatecloud;
 
-import cloud.utils.configuration.model.network.FirewallRuleDescription;
-import cloud.utils.configuration.model.network.SecurityGroupDescription;
-import cloud.utils.configuration.model.network.SubnetDescription;
+import cloud.utils.configuration.model.network.*;
 import cloud.utils.configuration.model.virtualprivatecloud.VPCDescription;
 import org.junit.Test;
 
@@ -38,7 +36,8 @@ public class VPCDescriptionTest {
     public void testLoadFromXml() throws JAXBException, IOException {
         JAXBContext context = JAXBContext.newInstance(VPCDescription.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        VPCDescription vpcDescription = (VPCDescription) unmarshaller.unmarshal(getClass().getModule().getResourceAsStream("VPCDescription.xml"));
+        VPCDescription vpcDescription = (VPCDescription) unmarshaller.unmarshal(getClass()
+                .getModule().getResourceAsStream("VPCDescription.xml"));
         assertEquals(2, vpcDescription.getSecurityGroups().length);
         assertEquals(4, vpcDescription.getSubnets().length);
         assertEquals("PharmaVPC", vpcDescription.getVpcName());
@@ -91,5 +90,28 @@ public class VPCDescriptionTest {
         assertEquals("1bPrivatePharma", subnet.getName());
         assertEquals("10.0.4.0/24", subnet.getIpRange());
         assertEquals("us-east-1b", subnet.getAZ());
+        //internet gateway
+        InternetGatewayDescription internetGatewayDescription = vpcDescription.getInternetGateway();
+        assertEquals("IgwPharma", internetGatewayDescription.getName());
+        assertEquals("PubicPharmaRT", internetGatewayDescription.getRouteTableName());
+        assertEquals(2, internetGatewayDescription.getSubnetNames().length);
+        assertEquals("1aPublicPharma", internetGatewayDescription.getSubnetNames()[0]);
+        assertEquals("1bPublicPharma", internetGatewayDescription.getSubnetNames()[1]);
+        assertEquals("0.0.0.0/0", internetGatewayDescription.getAddress());
+        //NAT Gateways
+        NatGatewayDescription[] natGateways = vpcDescription.getNatGateways();
+        assertEquals(2, natGateways.length);
+        //first NAT Gateway
+        assertEquals("NatPharma1", natGateways[0].getName());
+        assertEquals("eilpPharma1", natGateways[0].getElasticIpName());
+        assertEquals("1aPrivatePharma", natGateways[0].getSubnetName());
+        assertEquals("PrivatePharmaRT1", natGateways[0].getRouteTableName());
+        assertEquals("0.0.0.0/0", natGateways[0].getDestinationAddress());
+        //second NAT Gateway
+        assertEquals("NatPharma2", natGateways[1].getName());
+        assertEquals("eilpPharma2", natGateways[1].getElasticIpName());
+        assertEquals("1bPrivatePharma", natGateways[1].getSubnetName());
+        assertEquals("PrivatePharmaRT2", natGateways[1].getRouteTableName());
+        assertEquals("0.0.0.0/0", natGateways[1].getDestinationAddress());
     }
 }

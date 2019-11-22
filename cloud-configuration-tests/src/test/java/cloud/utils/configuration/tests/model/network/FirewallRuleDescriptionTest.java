@@ -33,7 +33,8 @@ public class FirewallRuleDescriptionTest {
     public void  testLoadFromXml() throws JAXBException, IOException {
         JAXBContext context = JAXBContext.newInstance(FirewallRuleDescription.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        FirewallRuleDescription firewallRuleDescription = (FirewallRuleDescription) unmarshaller.unmarshal(getClass().getModule().getResourceAsStream("FirewallRuleDescription.xml"));
+        FirewallRuleDescription firewallRuleDescription = (FirewallRuleDescription) unmarshaller.unmarshal(getClass()
+                .getModule().getResourceAsStream("FirewallRuleDescription.xml"));
         assertEquals("0.0.0.0/0", firewallRuleDescription.getIpRanges()[0]);
         assertEquals("10.0.0.0/0", firewallRuleDescription.getIpRanges()[1]);
         assertEquals("tcp", firewallRuleDescription.getProtocol());

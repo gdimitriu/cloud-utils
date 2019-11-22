@@ -19,10 +19,7 @@
  */
 package cloud.utils.configuration.model.network;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "FirewallRule")
@@ -40,6 +37,9 @@ public class FirewallRuleDescription {
     @XmlElement(name = "to")
     private Integer toPort;
 
+    @XmlTransient
+    private String id;
+
     public String[] getIpRanges() {
         return ipRanges;
     }
@@ -54,5 +54,21 @@ public class FirewallRuleDescription {
 
     public Integer getToPort() {
         return toPort;
+    }
+
+    /**
+     * get the id resource from cloud
+     * @return  id resource
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * set the id resource from cloud
+     * @param id the resource id
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }

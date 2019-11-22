@@ -17,14 +17,16 @@
  You should have received a copy of the GNU General Public License
  along with cloud-utils.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cloud.utils.configuration.tests.model.network;
+package cloud.utils.configuration.tests.model;
 
+import cloud.utils.configuration.tests.model.network.*;
+import cloud.utils.configuration.tests.model.virtualprivatecloud.VPCDescriptionTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({SubnetDescriptionTest.class, FirewallRuleDescriptionTest.class,
-        SecurityGroupDescriptionTest.class, InternetGatewayDescriptionTest.class,
-        NatGatewayDescriptionTest.class})
-public class AllNetworkSuiteTests {
+@Suite.SuiteClasses({FirewallRuleDescriptionTest.class, SecurityGroupDescriptionTest.class,
+        SubnetDescriptionTest.class, InternetGatewayDescriptionTest.class, NatGatewayDescriptionTest.class,
+        VPCDescriptionTest.class})
+public class AllModelSuiteTests {
 }

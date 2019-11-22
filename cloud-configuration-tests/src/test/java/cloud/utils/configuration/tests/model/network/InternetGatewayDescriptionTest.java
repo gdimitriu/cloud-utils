@@ -19,24 +19,28 @@
  */
 package cloud.utils.configuration.tests.model.network;
 
-import cloud.utils.configuration.model.network.SubnetDescription;
+import cloud.utils.configuration.model.network.InternetGatewayDescription;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
 
-public class SubnetDescriptionTest {
+import static org.junit.Assert.assertEquals;
+
+public class InternetGatewayDescriptionTest {
     @Test
     public void testLoadFromXml() throws JAXBException, IOException {
-        JAXBContext context = JAXBContext.newInstance(SubnetDescription.class);
+        JAXBContext context = JAXBContext.newInstance(InternetGatewayDescription.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        SubnetDescription subnetDescription = (SubnetDescription) unmarshaller.unmarshal(getClass()
-                .getModule().getResourceAsStream("SubnetDescription.xml"));
-        assertEquals("SubnetName", subnetDescription.getName());
-        assertEquals("10.0.1.0/24", subnetDescription.getIpRange());
-        assertEquals("us-east-1a", subnetDescription.getAZ());
+        InternetGatewayDescription internetGatewayDescription = (InternetGatewayDescription) unmarshaller.unmarshal(getClass()
+                .getModule().getResourceAsStream("InternetGatewayDescription.xml"));
+        assertEquals("IgwPharma", internetGatewayDescription.getName());
+        assertEquals("PubicPharmaRT", internetGatewayDescription.getRouteTableName());
+        assertEquals(2, internetGatewayDescription.getSubnetNames().length);
+        assertEquals("1aPublicPharma", internetGatewayDescription.getSubnetNames()[0]);
+        assertEquals("1bPublicPharma", internetGatewayDescription.getSubnetNames()[1]);
+        assertEquals("0.0.0.0/0", internetGatewayDescription.getAddress());
     }
 }
