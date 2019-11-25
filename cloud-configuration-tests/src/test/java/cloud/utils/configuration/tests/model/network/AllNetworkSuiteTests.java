@@ -25,6 +25,6 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({SubnetDescriptionTest.class, FirewallRuleDescriptionTest.class,
         SecurityGroupDescriptionTest.class, InternetGatewayDescriptionTest.class,
-        NatGatewayDescriptionTest.class})
+        NatGatewayDescriptionTest.class, ListenerDescriptionTest.class, LoadBalancerDescriptionTest.class})
 public class AllNetworkSuiteTests {
 }

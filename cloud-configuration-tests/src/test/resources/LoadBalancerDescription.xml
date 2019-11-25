@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LoadBalancer Name="PharmaLB">
+    <SubnetName>1aPublicPharma</SubnetName>
+    <SubnetName>1bPublicPharma</SubnetName>
+    <SecurityGroupName>WebServerSecurityGroupLinux</SecurityGroupName>
+    <Listener>
+        <LbProtocol>HTTP</LbProtocol>
+        <LbPort>80</LbPort>
+        <InstanceProtocol>HTTP</InstanceProtocol>
+        <InstancePort>80</InstancePort>
+    </Listener>
+    <Listener>
+        <LbProtocol>HTTPS</LbProtocol>
+        <LbPort>81</LbPort>
+        <InstanceProtocol>HTTPS</InstanceProtocol>
+        <InstancePort>81</InstancePort>
+    </Listener>
+    <CrossBalancing>true</CrossBalancing>
+    <InstanceName>WebInstance1</InstanceName>
+    <InstanceName>WebInstance2</InstanceName>
+</LoadBalancer>
