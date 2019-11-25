@@ -19,6 +19,9 @@
  */
 package cloud.utils.configuration.tests.model;
 
+import cloud.utils.configuration.tests.model.auth.PolicyConditionDescriptionTest;
+import cloud.utils.configuration.tests.model.auth.PolicyDescriptionTest;
+import cloud.utils.configuration.tests.model.auth.PolicyPrincipalDescriptionTest;
 import cloud.utils.configuration.tests.model.computing.ComputingResourceDescriptionTest;
 import cloud.utils.configuration.tests.model.network.*;
 import cloud.utils.configuration.tests.model.virtualprivatecloud.VPCDescriptionTest;
@@ -30,6 +33,7 @@ import org.junit.runners.Suite;
         SubnetDescriptionTest.class, InternetGatewayDescriptionTest.class, NatGatewayDescriptionTest.class,
         ListenerDescriptionTest.class, LoadBalancerDescriptionTest.class,
         VPCDescriptionTest.class,
-        ComputingResourceDescriptionTest.class})
+        ComputingResourceDescriptionTest.class,
+        PolicyPrincipalDescriptionTest.class, PolicyConditionDescriptionTest.class, PolicyDescriptionTest.class})
 public class AllModelSuiteTests {
 }

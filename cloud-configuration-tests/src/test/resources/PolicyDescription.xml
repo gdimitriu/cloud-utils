@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Policy Name = "SNS_WITH_SQS">
+    <Version>2008-10-17</Version>
+    <Sid>topic-subscription-arn:aws:sns:us-west-2:599109622955:myTopic</Sid>
+    <Effect>Allow</Effect>
+    <Principal>
+        <Service>AWS</Service>
+        <Rule>*</Rule>
+    </Principal>
+    <Action>SQS:SendMessage</Action>
+    <Action>SQS:ReceiveMessage</Action>
+    <Resource>arn:aws:sqs:us-west-2:599109622955:myQueue</Resource>
+    <Condition>
+        <Predicate>ArnEquals</Predicate>
+        <Type>aws:SourceArn</Type>
+        <Resource>arn:aws:sns:us-west-2:599109622955:myTopic</Resource>
+    </Condition>
+</Policy>

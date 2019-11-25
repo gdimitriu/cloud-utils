@@ -17,10 +17,28 @@
  You should have received a copy of the GNU General Public License
  along with cloud-utils.  If not, see <http://www.gnu.org/licenses/>.
  */
-module cloud.utils.configuration {
-    requires java.xml.bind;
-    exports cloud.utils.configuration.model.network;
-    exports cloud.utils.configuration.model.virtualprivatecloud;
-    exports cloud.utils.configuration.model.computing;
-    exports cloud.utils.configuration.model.auth;
+package cloud.utils.configuration.model.auth;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "Principal")
+public class PolicyPrincipalDescription {
+
+    @XmlElement(name = "Service")
+    private String service;
+
+    @XmlElement(name = "Rule")
+    private String rule;
+
+    public String getService() {
+        return service;
+    }
+
+    public String getRule() {
+        return rule;
+    }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Condition>
+    <Predicate>ArnEquals</Predicate>
+    <Type>aws:SourceArn</Type>
+    <Resource>arn:aws:sns:us-west-2:599109622955:myTopic</Resource>
+</Condition>
