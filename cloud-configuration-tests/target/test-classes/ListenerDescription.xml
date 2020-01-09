@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Listener>
+    <LbProtocol>HTTP</LbProtocol>
+    <LbPort>80</LbPort>
+    <InstanceProtocol>HTTP</InstanceProtocol>
+    <InstancePort>80</InstancePort>
+</Listener>

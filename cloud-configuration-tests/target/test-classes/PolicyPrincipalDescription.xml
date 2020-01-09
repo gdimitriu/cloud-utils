@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Principal>
+    <Service>AWS</Service>
+    <Rule>*</Rule>
+</Principal>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<SecurityGroup Name="MySecurityGroup">
+    <Description>My Security Group</Description>
+    <FirewallRule>
+        <IpRange>0.0.0.0/0</IpRange>
+        <IpRange>10.0.0.0/0</IpRange>
+        <Protocol>tcp</Protocol>
+        <from>22</from>
+        <to>22</to>
+    </FirewallRule>
+    <FirewallRule>
+        <IpRange>20.0.0.0/0</IpRange>
+        <IpRange>30.0.0.0/0</IpRange>
+        <Protocol>tcp</Protocol>
+        <from>22</from>
+        <to>22</to>
+    </FirewallRule>
+</SecurityGroup>

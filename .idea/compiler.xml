@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-configuration-tests" />
+        <module name="cloud-configuration" />
+        <module name="cloudconfigurationtests" />
+        <module name="pharma-aws-sdk2" />
+        <module name="pharma-aws-sdk1" />
+        <module name="aws-utils-tests" />
+        <module name="awssdk1utils" />
+        <module name="awsutils" />
+        <module name="aws-sdk2-utils" />
+        <module name="aws-sdk1-utils" />
+        <module name="aws-utils" />
+        <module name="awssdk2utils" />
+        <module name="awsutilstests" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
