@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NatGateway Name = "NatPharma1">
+    <ElasticIpName>eilpPharma1</ElasticIpName>
+    <SubnetName>1aPrivatePharma</SubnetName>
+    <RouteTableName>PrivatePharmaRT1</RouteTableName>
+    <Address>0.0.0.0/0</Address>
+</NatGateway>
