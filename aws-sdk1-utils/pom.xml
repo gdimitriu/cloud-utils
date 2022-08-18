@@ -26,7 +26,7 @@
         </plugins>
     </build>
     <properties>
-        <aws1.version>1.11.672</aws1.version>
+        <aws1.version>1.12.261</aws1.version>
     </properties>
     <dependencies>
         <dependency>
